@@ -31,7 +31,7 @@ public class StudentController {
         return studentService.login(student);
     }
     @PostMapping("/create-task")
-    public  ApiResponse<String> createTask (@RequestBody TaskRequest taskRequest){
+    public  TaskEntity createTask (@RequestBody TaskRequest taskRequest){
         return taskService.createTask(taskRequest);
     }
     @GetMapping("/view-all-task")

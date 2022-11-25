@@ -9,4 +9,6 @@ public interface StudentEntityRepository extends JpaRepository<StudentEntity, Lo
     Boolean existsByEmail(String email);
     StudentEntity getStudentEntitiesByEmailAndPassword(String email, String password);
     StudentEntity getStudentEntitiesById(Long id);
+
+    StudentEntity getStudentEntityById(Long id);
 }

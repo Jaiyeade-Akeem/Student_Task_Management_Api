@@ -1,10 +1,7 @@
 package com.example.taskmanager.Entities;
 
 import com.example.taskmanager.Utils.Status;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,9 +10,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
-@Getter
-@Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class TaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,13 +40,17 @@ public class TaskEntity {
     @Column( nullable = false)
     private Timestamp completedAt;
 
-    public TaskEntity(Long id, String title, String description, Status status, Timestamp createdAt, Timestamp updateAt, Timestamp completedAt) {
-        this.id = id;
+    public TaskEntity() {
+
+    }
+
+    public TaskEntity(StudentEntity student, String title, String description, Status status, Timestamp completedAt) {
+        this.student = student;
         this.title = title;
         this.description = description;
         this.status = status;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        //this.createdAt = createdAt;
+        //this.updateAt = updateAt;
         this.completedAt = completedAt;
     }
 }

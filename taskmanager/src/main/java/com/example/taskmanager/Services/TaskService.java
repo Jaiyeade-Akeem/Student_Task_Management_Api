@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TaskService {
-    ApiResponse createTask(TaskRequest taskRequest);
+    TaskEntity createTask(TaskRequest taskRequest);
     String viewAllTasks();
     String viewATask(Long id);
     List<TaskEntity> viewAllPendingTask();

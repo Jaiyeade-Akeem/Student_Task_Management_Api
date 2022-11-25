@@ -25,7 +25,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskEntityRepository taskEntityRepository;
     private final ResponseManager response;
     @Override
-    public ApiResponse createTask(TaskRequest taskRequest) {
+    public TaskEntity createTask(TaskRequest taskRequest) {
         StudentEntity studentWhoCreatedTask = studentEntityRepository.getStudentEntitiesById(taskRequest.getStudentId());
         TaskEntity newTask = new TaskEntity();
         newTask.setTitle(taskRequest.getTitle());
@@ -34,7 +34,9 @@ public class TaskServiceImpl implements TaskService {
         newTask.setCompletedAt(taskRequest.getCompletedAt());
         newTask.setStatus(taskRequest.getStatus());
         taskEntityRepository.save(newTask);
-            return response.success("Task created successfully");
+
+        return newTask;
+        //return response.success("Task created successfully");
 
     }
 
