@@ -1,15 +1,12 @@
-package com.example.taskmanager;
+package com.example.taskmanager.ServicesImpl;
 
 import com.example.taskmanager.Entities.StudentEntity;
 import com.example.taskmanager.Entities.TaskEntity;
-import com.example.taskmanager.Models.ApiResponse;
 import com.example.taskmanager.Models.TaskRequest;
 import com.example.taskmanager.Repositories.StudentEntityRepository;
 import com.example.taskmanager.Repositories.TaskEntityRepository;
-import com.example.taskmanager.ServicesImpl.TaskServiceImpl;
-import com.example.taskmanager.Utils.ResponseManager;
+import com.example.taskmanager.TaskServiceImplMockitoTest;
 import com.example.taskmanager.Utils.Status;
-import org.assertj.core.internal.Classes;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,13 +14,14 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest(classes = {TaskServiceImplMockitoTest.class})
-public class TaskServiceImplMockitoTest {
+@SpringBootTest(classes = {TaskServiceImplTest.class})
+class TaskServiceImplTest {
 
     @Mock
     TaskEntityRepository taskEntityRepository;
@@ -49,17 +47,53 @@ public class TaskServiceImplMockitoTest {
 
     @Test
     @Order(1)
+    void createTask() {
 
-    public void test_createTask(){
         TaskRequest taskRequest = new TaskRequest(student.getId(), "Integration testing Assignment","Create an application using int. testing",
                 Status.COMPLETED, new Timestamp(2022-11-23));
         StudentEntity studentEntity = studentEntityRepository.getStudentEntityById(student.getId());
-
-        when(studentEntityRepository.getStudentEntityById(student.getId())).thenReturn(student);
         TaskEntity taskEntity = new TaskEntity(studentEntity, "Integration testing Assignment", "Create an application using int. testing",
                 Status.COMPLETED, new Timestamp(2022-11-23));
         when(taskEntityRepository.save(taskEntity)).thenReturn(taskEntity);
         assertEquals(taskEntity, taskService.createTask(taskRequest));
+    }
 
+    @Test
+    @Order(2)
+    void viewAllTasks() {
+        when(taskEntityRepository.findAll()).thenReturn(tasks);
+        assertEquals(tasks, taskService.viewAllTasks());
+    }
+
+    @Test
+    void viewATask() {
+    }
+
+    @Test
+    void viewAllPendingTask() {
+    }
+
+    @Test
+    void viewAllDoneTask() {
+    }
+
+    @Test
+    void viewAllTaskInProgress() {
+    }
+
+    @Test
+    void changeTaskToPending() {
+    }
+
+    @Test
+    void changeTaskToDone() {
+    }
+
+    @Test
+    void editTask() {
+    }
+
+    @Test
+    void deleteTask() {
     }
 }

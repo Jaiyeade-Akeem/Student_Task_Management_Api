@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface TaskService {
     TaskEntity createTask(TaskRequest taskRequest);
-    String viewAllTasks();
+    List<TaskEntity> viewAllTasks();
     String viewATask(Long id);
     List<TaskEntity> viewAllPendingTask();
     List<TaskEntity> viewAllDoneTask();

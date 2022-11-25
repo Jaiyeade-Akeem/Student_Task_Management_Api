@@ -35,7 +35,7 @@ public class StudentController {
         return taskService.createTask(taskRequest);
     }
     @GetMapping("/view-all-task")
-    public String view_all_task(){
+    public List<TaskEntity> view_all_task(){
 
         return taskService.viewAllTasks();
     }
