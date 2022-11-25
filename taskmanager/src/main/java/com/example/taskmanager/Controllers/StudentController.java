@@ -40,7 +40,7 @@ public class StudentController {
         return taskService.viewAllTasks();
     }
     @GetMapping(path = "view-task/{id}")
-    public String view_a_task(@PathVariable("id") Long id){
+    public TaskEntity view_a_task(@PathVariable("id") Long id){
         return taskService.viewATask(id);
     }
 

@@ -55,12 +55,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public String viewATask(Long id) {
+    public TaskEntity viewATask(Long id) {
         TaskEntity task = taskEntityRepository.getById(id);
-        return "[Task-Id]: " + task.getId() + "\n[Task-Title]: " + task.getTitle() + "\n[Task-Description]:"
-                + task.getDescription() + "\n[Task-Created by]: "
-                + task.getStudent().getUsername() + "\n[Task-CreatedAt]: " + task.getCreatedAt() + "\n[Task-Status]: "
-                + task.getStatus() ;
+//        return "[Task-Id]: " + task.getId() + "\n[Task-Title]: " + task.getTitle() + "\n[Task-Description]:"
+//                + task.getDescription() + "\n[Task-Created by]: "
+//                + task.getStudent().getUsername() + "\n[Task-CreatedAt]: " + task.getCreatedAt() + "\n[Task-Status]: "
+//                + task.getStatus() ;
+        return task;
     }
 
     @Override

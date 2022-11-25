@@ -61,12 +61,18 @@ class TaskServiceImplTest {
     @Test
     @Order(2)
     void viewAllTasks() {
+        Integer count = tasks.size();
         when(taskEntityRepository.findAll()).thenReturn(tasks);
-        assertEquals(tasks, taskService.viewAllTasks());
+        assertEquals(count, taskService.viewAllTasks().size());
     }
 
     @Test
+    @Order(3)
     void viewATask() {
+        Long id = 3L;
+        //TaskEntity existingTask = taskEntityRepository.getTaskEntityById(id);
+       when(taskEntityRepository.getTaskEntityById(id)).thenReturn(new TaskEntity());
+       assertEquals(tasks.get(2), taskService.viewATask(id));
     }
 
     @Test
