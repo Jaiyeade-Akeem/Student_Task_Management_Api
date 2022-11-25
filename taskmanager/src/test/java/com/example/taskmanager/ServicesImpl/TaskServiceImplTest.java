@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Timestamp;
@@ -70,9 +71,9 @@ class TaskServiceImplTest {
     @Order(3)
     void viewATask() {
         Long id = 3L;
-        //TaskEntity existingTask = taskEntityRepository.getTaskEntityById(id);
+        TaskEntity existingTask = taskEntityRepository.getTaskEntityById(id);
        when(taskEntityRepository.getTaskEntityById(id)).thenReturn(new TaskEntity());
-       assertEquals(tasks.get(2), taskService.viewATask(id));
+       assertEquals(existingTask, taskService.viewATask(id));
     }
 
     @Test
